@@ -1,0 +1,11 @@
+<div class="character-details p-3">
+    <div class="d-flex align-items-center mb-3">
+      <img [src]="character.imageUrl" [alt]="character.name" class="img-fluid rounded-circle mr-3" style="width: 100px; height: 100px;">
+      <div>
+        <h2>{{ character.name }}</h2>
+        <small class="text-muted">ID: {{ character.id }}</small>
+      </div>
+    </div>
+    <p>{{ character.description || 'No description available.' }}</p>
+  </div>
+  

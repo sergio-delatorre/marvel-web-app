@@ -1,0 +1,23 @@
+.character-details {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .character-details img {
+    border: 2px solid #ddd;
+  }
+  
+  .character-details h2 {
+    margin: 0;
+  }
+  
+  .character-details small {
+    display: block;
+    margin-top: 5px;
+  }
+  
+  .character-details p {
+    margin-top: 15px;
+  }
+  

@@ -10,7 +10,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { CharacterListComponent } from './components/character-list/character-list.component';
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { JwtInterceptor } from './shared/interceptors/JWTInterceptor';
+import { JwtInterceptor } from './shared/interceptors/JwtInterceptor';
 
 @NgModule({
   declarations: [

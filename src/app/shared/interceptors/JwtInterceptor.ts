@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable, switchMap } from "rxjs";
 import { AuthenticationService } from "src/app/services/authentication.service";
 import { UserRequest, UserResponse } from '../../interfaces/authentication.interface';
+import { environment } from "src/environments/environment";
 
 
 @Injectable()
@@ -11,7 +12,7 @@ export class JwtInterceptor implements HttpInterceptor {
   constructor(private authService: AuthenticationService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // Verificar si la solicitud es una solicitud de autenticación realizada por el servicio AuthService
+    // Ignorar cuando es la petición http para autenticar
     if (this.isAuthenticationRequest(request)) {
       return next.handle(request);
     }
@@ -41,6 +42,6 @@ export class JwtInterceptor implements HttpInterceptor {
   }
 
   private isAuthenticationRequest(request: HttpRequest<any>): boolean {
-    return request.url.includes('/users') && request.method === 'POST';
+    return request.url.includes(environment.authUri) && request.method === 'POST';
   }
 }

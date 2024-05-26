@@ -17,4 +17,8 @@ export class CharacterService {
     return this.http.get<Character[]>(`${environment.marvelApiBaseUrl}${this.CHARACTERS_ENDPOINT}`);
   }
 
+  public getCharacterById( id: number ) {
+    return this.http.get<Character>(`${environment.marvelApiBaseUrl}${this.CHARACTERS_ENDPOINT}/${id}`);
+  }
+
 }

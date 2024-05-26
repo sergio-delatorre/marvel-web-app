@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Character } from 'src/app/interfaces/character.interface';
 import { CharacterService } from 'src/app/services/character.service';
+import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
+import { CharacterDetailsComponent } from '../character-details/character-details.component';
 
 @Component({
   selector: 'app-character-list',
@@ -10,7 +13,7 @@ export class CharacterListComponent implements OnInit{
 
   public characters: Character[] = [];
 
-  constructor(private characterService: CharacterService) {}
+  constructor(private characterService: CharacterService, private modalService: NgbModal) {}
 
   ngOnInit() {
     this.getCharacters();
@@ -26,5 +29,19 @@ export class CharacterListComponent implements OnInit{
           console.error('Error fetching characters:', error);
         }
       );
+  }
+
+  openCharacterModal(characterId: number) {
+    this.characterService.getCharacterById(characterId).subscribe(
+      (character: Character) => {
+        const modalRef = this.modalService.open(ModalComponent);
+        modalRef.componentInstance.title = character.name;
+        modalRef.componentInstance.component = CharacterDetailsComponent;
+        modalRef.componentInstance.data = { character };
+      },
+      (error) => {
+        console.error('Error fetching character details:', error);
+      }
+    );
   }
 }

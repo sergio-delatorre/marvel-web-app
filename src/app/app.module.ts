@@ -9,6 +9,8 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { CharacterListComponent } from './components/character-list/character-list.component';
 import { CommonModule } from '@angular/common';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { JwtInterceptor } from './shared/interceptors/JWTInterceptor';
 
 @NgModule({
   declarations: [
@@ -22,9 +24,12 @@ import { CommonModule } from '@angular/common';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

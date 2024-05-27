@@ -1,0 +1,16 @@
+<div class="container">
+    <h1>Bitacora</h1>
+    <div *ngIf="requestLogs.length > 0; else noLogs">
+      <div class="card mb-2" *ngFor="let log of requestLogs">
+        <div class="card-body">
+          <h5 class="card-title">Time: {{ log.created | date:'medium' }}</h5>
+          <p class="card-text">Path: {{ log.path }}</p>
+          <p class="card-text">ID: {{ log.id }}</p>
+        </div>
+      </div>
+    </div>
+    <ng-template #noLogs>
+      <p>No request logs available.</p>
+    </ng-template>
+  </div>
+  

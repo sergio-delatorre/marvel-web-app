@@ -18,7 +18,9 @@ export class BitacoraComponent implements OnInit {
   getRequestLogs(): void {
     this.requestLogService.getCharacters()
       .subscribe((logs: RequestLog[]) => {
-        this.requestLogs = logs;
+        this.requestLogs = logs.sort((a, b) => {
+          return new Date(b.created).getTime() - new Date(a.created).getTime();
+        });
       });
   }
 

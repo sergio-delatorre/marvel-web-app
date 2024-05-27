@@ -11,6 +11,8 @@ import { CharacterListComponent } from './components/character-list/character-li
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JwtInterceptor } from './shared/interceptors/JwtInterceptor';
+import { BitacoraComponent } from './components/bitacora/bitacora.component';
+import { LoaderComponent } from './shared/components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { JwtInterceptor } from './shared/interceptors/JwtInterceptor';
     HomeComponent,
     NavbarComponent,
     FooterComponent,
-    CharacterListComponent
+    CharacterListComponent,
+    BitacoraComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

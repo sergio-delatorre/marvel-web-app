@@ -12,6 +12,7 @@ import { CharacterDetailsComponent } from '../character-details/character-detail
 export class CharacterListComponent implements OnInit{ 
 
   public characters: Character[] = [];
+  public loading: boolean = false;
 
   constructor(private characterService: CharacterService, private modalService: NgbModal) {}
 
@@ -20,13 +21,16 @@ export class CharacterListComponent implements OnInit{
   }
 
   private getCharacters() {
+    this.loading = true;
     this.characterService.getCharacters()
       .subscribe(
         (characters: Character[]) => {
           this.characters = characters;
+          this.loading = false;
         },
         (error) => {
           console.error('Error fetching characters:', error);
+          this.loading = false;
         }
       );
   }
